@@ -1,0 +1,2 @@
+ To use SQL, open an R Notebook in the RStudio IDE under the File > New File menu. Start a new code chunk with {sql} , and specify your connection with the connection=con code chunk option. If you want to send the query output to an R dataframe, use output. var = "mydataframe" in the code chunk options.  
+
