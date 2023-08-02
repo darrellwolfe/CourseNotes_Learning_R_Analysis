@@ -1,4 +1,18 @@
-https://support.posit.co/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages
+# Packages Information
+  # Packages I have found useful or though might be interesting
+
+# Package Links
+
+# Posit Recommended Packages - Quick list of useful R packages
+  [ClickForPackageInfo](https://support.posit.co/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages)
+  # Ctrl+Mouse-Left-Click
+
+
+
+
+
+
+# UNDER CONSTRUCTION.............
 
 Recommended Packages
 Many useful R function come in packages, free libraries of code written by R's active user community. To install an R package, open an R session and type at the command line
