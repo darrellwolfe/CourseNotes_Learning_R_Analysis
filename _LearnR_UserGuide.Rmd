@@ -16,11 +16,9 @@ This document exists to
 
 Checkout the [RStudio RMarkdown Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf), which I referenced while creating this document.
 
-*This link was created with the code below:*
-
-```{r echo = TRUE}
-  [Checkout the RMarkdown Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) 
-  # Inside a Doc.R document, use: Ctrl + (Mouse Left Click)
+```         
+#Example:
+Checkout the [RStudio RMarkdown Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf), which I referenced while creating this document.
 ```
 
 ------------------------------------------------------------------------
@@ -43,8 +41,7 @@ Checkout the [RStudio RMarkdown Cheat Sheet](https://www.rstudio.com/wp-content/
 
 This is what I used:
 
-```{r echo = FALSE}
-
+```         
 # This is what I used:
 * Learn_R_ref_Intro_to.R - That's where you are now
 * Learn_R_ref_Resources.html - This will be links to Videos, Blogs, and Websites about R
@@ -55,8 +52,7 @@ This is what I used:
 
 This is what it was corrected to:
 
-```{r echo = FALSE}
-
+```         
 # This is what it was corrected to:
 -   Learn_R_ref_Intro_to.R - That's where you are now
 
@@ -67,7 +63,6 @@ This is what it was corrected to:
 -   Learn_R_4_Packages\_.R - Information on important or interesting packages I find along the way.
 
 -   Learn_R_ref_HowTo_TBC -
-
 ```
 
 ------------------------------------------------------------------------
@@ -80,9 +75,8 @@ I'm creating this as I'm learning R through Coursera. For information on the cou
 
 [Data Analysis with R Programming](https://www.coursera.org/learn/data-analysis-r/home/welcome)
 
-```{r echo = TRUE}
+```         
 [Data Analysis with R Programming](https://www.coursera.org/learn/data-analysis-r/home/welcome) 
-
 ```
 
 #### Other Resources
@@ -109,7 +103,6 @@ S was created by John Chambers and colleagues at Bell Laboratories.
 
 R has become a go-to language for statistical computing and graphics, widely used among statisticians and data analysts.
 
-
 ------------------------------------------------------------------------
 
 ## I assume you are using RStudio Desktop:
@@ -129,14 +122,13 @@ If you choose to download, you will want to install both: 1. R - That is the cod
 # Inside a Doc.R document, use: Ctrl + (Mouse Left Click)
 ```
 
-
 ------------------------------------------------------------------------
 
 ## RStudio Desktop Overview
 
-
-
-
+```{r echo = TRUE}
+print("RStudio")
+```
 
 ------------------------------------------------------------------------
 
@@ -155,6 +147,121 @@ version
 ------------------------------------------------------------------------
 
 ## RStudio Tour
+
+### RStudio Desktop
+
+![](y.Images/RStudio_Desktop_Full.jpg)
+
+### Document Type .R
+
+![](y.Images/RStudio_Desktop_Docments_Views.jpg)
+
+### view() - Shows up in the Top Left panel by default.
+
+![](y.Images/RStudio_Desktop_Top_Left_View.jpg)
+
+### Top Left - Environment
+
+This shows datasets and values and stored values. If you set x \<- 10, it will show that x equals ten.
+
+![](y.Images/RStudio_Desktop_Right_Top.jpg)
+
+### Files
+
+My files are constantly evolving. Even since taking this screenshot last night, it changed. However, this is where you fill find all the files you have written. You can code in R, RMarkdown, SQL, Python, vba and others, and have them all linked to your GitHub code base.
+
+![](y.Images/RStudio_Desktop_Right_Bottom_Files.jpg)
+
+### Plots
+
+Plots is where your visuals will appear once you have run them.
+
+![](y.Images/RStudio_Desktop_Bottom_Right_Plot.jpg)
+
+### GitHub
+
+Optional but recommended. If you create a GitHub Repository, then link that repo to RStudio, you can push all your code to the cloud easily. This way, you can also recover it from anywhere and share it with others. This my [R_Analysis repo here](https://github.com/darrellwolfe/R_Analysis "R_Analysis repo here").
+
+![](y.Images/RStudio_Desktop_Right_Top_GitHub.jpg)
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------
+
+## R \<- 101
+
+At its core, R is a place to build and run RStudio R code. However, RStudio has evolved to be a full-service code editor. I have grown to enjoy it more than Visual Studio. Here are few intro to RStudio items that you can use right now on your own session.
+
+### Calculator
+
+##### Basic Math
+
+```{R echo = FALSE}
+1+1
+```
+
+##### Variables
+
+Note: To assign a variable use (\<-). While you can use (=), don't for reasons I don't fully understand yet.
+
+```{R echo = FALSE}
+x <- 10 #This assigns the variable, place cursor here and then Ctrl+Enter
+10 * x #Now run this calculation, place cursor here and then Ctrl+Enter
+```
+
+##### Vectors
+
+GPT-4 on vectors: " In R, a vector is a sequence of data elements of the same basic type. Members in a vector are officially called components. However, we will often use the term "elements" interchangeably.
+
+There are two key points here:
+
+1.  The data elements of a vector must all be of the same type. Thus, we may have a vector of integers, a vector of real numbers, a vector of complex numbers, a vector of logical values, a vector of characters, etc.
+2.  The order of elements in a vector matters.
+
+The "c()" function in R is used to create vectors. The "c" stands for concatenate, which means to join or link things together in a chain or series.
+
+Let's take your example, `c(10,1,5,60)`. This code is creating a vector in R with four elements: 10, 1, 5, and 60. This vector is of numeric type, meaning all elements are numbers.
+
+You can assign this vector to a variable like this:
+
+``` r
+my_vector <- c(10,1,5,60)
+```
+
+Now, `my_vector` holds your vector and you can use it in calculations, pass it to functions, etc. For example, if you want to calculate the sum of all elements in the vector, you would use the `sum()` function:
+
+``` r
+sum(my_vector)
+```
+
+This would output `76`, the sum of 10, 1, 5, and 60.
+
+R has many functions to manipulate vectors, including mathematical operations, sorting, and statistical analysis. These are one of the basic data structures of R and fundamental to how it operates. "
+
+```{R echo = FALSE}
+my_vector <- c(10,1,5,60)
+sum(my_vector)
+```
+
+### Help
+If you need to understand something or how a code works you can place a question mark in front of any code and run that. It will show up in your Help tab at the bottom right.
+
+```{R echo = FALSE}
+?print()
+?c()
+?library(tidyverse)
+```
+
+
+
+
+
 
 ------------------------------------------------------------------------
 
@@ -186,7 +293,7 @@ To see which packages are already installed, place cursor in the same line as th
 ```{r echo= FALSE}
 installed.packages() #Ctrl+Enter}
 
-![](y.Images/installed.packages.jpg)
+# Example ![](y.Images/installed.packages.jpg)
 
 ```
 
@@ -222,6 +329,24 @@ library(tidyverse) #Ctrl+Enter \# This probably works.
 library(tidyverse) #Ctrl+Enter
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # The Basics of R
 

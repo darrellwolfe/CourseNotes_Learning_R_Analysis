@@ -8,8 +8,6 @@ This is my CodeBase for working in R for Data Analysis. I started this repositor
 
 Start with my LearnR_UserGuide which I will be adding to frequently as I work through learning the ropes.
 
--   Go to Files \> "\_LearnR_UserGuide.Rmd "
-
 Shalom,
 
 Darrell Wolfe
