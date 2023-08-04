@@ -1,9 +1,9 @@
 # Welcome to Darrell WOlfe's R_Analysis CodeBase
 
 # 1. I assume you are using RStudio, if not, download that now:
-    # IF you are reading this in RStudio Cloud / Posit Cloud or in GitHub or online in some way...
+    ## IF you are reading this in RStudio Cloud / Posit Cloud or in GitHub or online in some way...
   
-    # You will want to install both: R and RStudio
+    ## You will want to install both: R and RStudio
       R <- #That is the code and operating system information you need running in the background.
       RStudio <- # That is the Graphic User Interface (GUI) that you will primarily interact with.
       #This is the link to download both:
