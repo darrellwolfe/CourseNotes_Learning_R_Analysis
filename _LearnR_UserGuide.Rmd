@@ -21,6 +21,10 @@ Checkout the [RStudio RMarkdown Cheat Sheet](https://www.rstudio.com/wp-content/
 Checkout the [RStudio RMarkdown Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf), which I referenced while creating this document.
 ```
 
+```{r eval=TRUE, include=TRUE}
+options(repos = c(CRAN = "https://cloud.r-project.org/"))
+```
+
 ------------------------------------------------------------------------
 
 ## This is a basic intro to R, I will be creating the following:
@@ -478,7 +482,7 @@ vs
 library(tidyverse) #Ctrl+Enter This probably works.
 ```
 
-```{r echo = FALSE}
+```{r eval=FALSE, include=TRUE}
 library(tidyverse) #Ctrl+Enter
 
 ```
@@ -525,25 +529,191 @@ GPT-4 Summarizes:
 
 ------------------------------------------------------------------------
 
-## Left Off here...
+## Pipes %\>%
 
-To Be Continued...
+The Pipe (%\>%) is a way of passing data and variables through to the next command. Think of it as "and then".
 
-Class Project: getting a quick summary view of the data to understand quickly the answer to a question, such as, "What is the penguin type with the shortest flipper?
+You can type this by holding Shift and then % \> %, or you can use the hotkey in RStudio.
+
+> -   Windows/Linux: Ctrl + Shift + M
+> -   Mac: Cmd + Shift + M
+
+This will add the pipe ( %\>% ) automatically. We'll be using piples more later, but an example is here below.
+
+------------------------------------------------------------------------
+
+# Data Cleaning
+
+This is Week 3, Coursera, "Cleaning up with the basics" video content.
+
+```{R eval=FALSE, include=TRUE}
+# Install these packages
+install.packages("here")
+install.packages("skimr")
+install.packages("janitor")
+```
+
+```{R eval=FALSE, include=TRUE}
+# Load these packages
+library(tidyverse)
+library(here)
+library(skimr)
+library(janitor)
+
+# Install and load the practice dataset
+install.packages("palmerpenguins")
+library(palmerpenguins)
+
+# Some ways to view data
+skim_without_charts(penguins)
+glimpse(penguins)
+head(penguins)
+select(penguins)
+
+penguins %>% # passess this dataset into the following argument. 
+  rename(island_new=island) # Changes the column name from "island" to "island_new"
+# 1. give me the penguins dataset (and then %>% ) 2. rename this column.
+
+```
+
+------------------------------------------------------------------------
+
+## Coursera - Transforming and Summarising Data
+
+### Penguin Summary Information
+
+Getting a quick summary view of the data to understand quickly the answer to a question, such as, "What is the penguin type with the shortest flipper?
 
 ```{r eval=FALSE, include=TRUE}
-library(dplyr)
+# Minimum is min
+penguins  %>% 
+  drop_na()  %>% 
+    group_by(species, sex)  %>% 
+      summarise(min_flipper_length = min(flipper_length_mm))
 
-result \<- penguins %\>%
-
-drop_na() %\>%
-
-group_by(species, sex) %\>%
-
-summarise(min_flipper_length = min(flipper_length_mm))
-
-print(result)
+# Alternatively, max
+      # summarise(max_flipper_length = max(flipper_length_mm))
 ```
+
+### Seperate (R) \<- Split (SQL)
+
+In SQL (and Excel Power Query), taking data from one column into two columns is called "Split", which can be accomplished through Split by Delimiter or Split by Character.
+
+In R, this is called "separate".
+
+```{r eval=FALSE, include=TRUE}
+seperate (employee, name, into=c('first_name','last_name'), sep=' |')
+# Take the employee table, name column, separate/split that column into two columns using the space as a delimiter.
+```
+
+### Unite (R) \<- Merge (SQL)
+
+Likewise, "Merge" in SQL or Excel Power Query is called "unite" in R.
+
+```{r eval=FALSE, include=TRUE}
+unite(employee,'name',first_name,last_name,sep=' ')
+```
+
+### Mutate (R) \<- Add Conditional Columns (Power Query) \<- Derived/Computed Columns (SQL)
+
+If you want to add a new column in R, you can use "mutate".
+
+```{r eval=FALSE, include=TRUE}
+mutate(body_mass_kg=body_mass_g/1000)
+#This adds a new column that converts Kilograms to Grams.
+```
+
+#### Side Bar: SQL Add Columns
+
+GPT-4 Explains:
+
+> When you create a new column in SQL by combining or performing some operation (like addition) on two or more existing columns, the new column is often referred to as a "derived column" or "computed column." Here's why:
+>
+> 1.  **Derived Column**: This term is used to describe a column that is derived from one or more existing columns in a table. For instance, if you're selecting from a table and you want to add together the values of two columns for your result set, the resulting column would be a derived column.
+>
+> 2.  **Computed Column**: This term is often used in the context of adding a new permanent column to a database table where the values are computed based on other columns. In some database systems, you can actually create computed columns that will automatically update their values based on the values of other columns.
+>
+> Here's a simple example of creating a derived column using SQL:
+>
+> ``` sql
+> SELECT first_name, last_name, salary, bonus, (salary + bonus) AS total_compensation
+> FROM employees;
+> ```
+>
+> In this example, `total_compensation` is a derived column that adds the `salary` and `bonus` columns together.
+>
+> Remember that the terminology might vary slightly based on context or the specific database platform. The most general term for such operations would be "derived column."
+
+### Bias Function
+
+In R, there is a bias() function that helps to see if there is any bias in the data. The lower the result, the less bias is present.
+
+#### Coursera:
+
+##### Data Analysis with R Programming \> Week 3 \>The bias function
+
+> *"When we run this we find out that the result Is 0.71. That's pretty close to zero but the prediction seemed biased towards lower temperatures which, means they aren't as accurate as they could be. And now that the local weather channel knows about this, they can find the problem in their system that's causing biased predictions. This doesn't mean that their predictions will be perfect all the time, but they'll be more accurate overall."*
+
+```{r eval=TRUE, include=TRUE}
+install.packages("SimDesign")
+# Example
+library(SimDesign)
+actual_temp <- c(68.3, 70 ,72.4, 71, 67, 70)
+predicted_temp <- c(67.9, 69, 71.5, 70, 67, 69)
+bias(actual_temp, predicted_temp)
+```
+
+### Clean Names
+
+```{r eval=FALSE, include=TRUE}
+clean_names(penguins) # What does this actually do?
+```
+
+### Arrange (R) \<- Order By (SQL) \<- Sort By (Excel/Power Query)
+
+```{r eval=FALSE, include=TRUE}
+penguins %>% arrange(body_mass_g)
+head(penguins)
+```
+
+### Statistical Differences
+
+```{r eval=TRUE, include=TRUE}
+
+install.packages('Tmisc')
+library(tidyverse)
+library(Tmisc)
+data(quartet)
+# View(quartet) # Use View to see the table.
+
+quartet %>% 
+  group_by(set) %>% 
+  summarise(mean(x), sd(x), mean(y), sd (y), cor(x,y))
+# Mean Averages are similar
+# Standard Deviation (sd), the standard deviation is similar in both sets , x & y
+# Correlation for each set, the correllation seems similar.
+```
+
+### Visualizing sd() and cor()
+
+```{r eval=TRUE, include=TRUE}
+ggplot(quartet, aes(x,y)) + geom_point() + geom_smooth(method=lm,se=FALSE) + facet_wrap(~set)
+# Taking the above summary, and then visualizing the data may tell a story that the numbers themslves did not. 
+```
+
+### Placeholder
+
+```{r eval=FALSE, include=TRUE}
+
+```
+
+------------------------------------------------------------------------
+
+## Left Off here...
+
+------------------------------------------------------------------------
+
+## Left Off here...
 
 ------------------------------------------------------------------------
 
