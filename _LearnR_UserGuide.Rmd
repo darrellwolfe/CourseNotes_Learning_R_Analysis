@@ -67,13 +67,72 @@ This is what it was corrected to:
 
 ------------------------------------------------------------------------
 
+## Citing ChatGPT / GPT-4
+
+A quick side-note about ChatGPT/GPT-4 citations in this document.
+
+If you (*somehow*) don't already know what ChatGPT (or GPT-4) is, then I wanted to provide a quick note.
+
+First (1st), periodically, I will be citing content provided by GPT-4. With a history in scholarship, I did not feel comfortable passing it off as my own. When I use GPT-4 to help me provide a summary or tutorial, I will cite that source directly.
+
+As such, all citations of GPT-4 below are from OpenAI's GPT-4 product. I have almost completely replace Google Searches with GPT-4 since I started using the ChatGPT in December 2022. While I still use Google, I use it less frequently as the days go by. The only reason I haven't completely replace Google with GPT-4 is because it is not (currently 08/05/2023) tied live-to-internet. So for store hours, directions, recent events, etc., I still use Google.
+
+Second (2nd), while I've used it to do tasks for me (like: "Strip this SQL Select list of comments and aliases, and provide it back in a comma delimited list of table.column" - so I can use them in a Group By list), I have not found that to be my primary use of GPT-4.
+
+The real power of GPT-4 isn't as a task-doer but as a tutor. I don't want the code written for me, I want to understand the code and syntax. When I use GPT-4 as a tutor, I begin to understand the concepts and how to use them. I can take three things I know, and have a logical idea of what I want to accomplish, and have GPT-4 show me the syntax steps I was missing to finalize the outcome I'm working for. It works with SQL, Macros, DAX, and R (probably Python too, but I haven't started Python yet, that's next).
+
+Below, you will see me asking GPT-4 to provide a summary. This mirrors how I use this as a tutor for teaching myself. Therefore, since I'm using it anyway, I decided to incorporate this into my guide, so anyone reading the guide can see how I use it effectively and adapt that for their own uses.
+
+If you're new to ChatGPT:
+
+[ChatGPT](https://chat.openai.com "Go to ChatGPT / GPT-4") is OpenAI's free version. [GPT-4](https://chat.openai.com/ "Go to ChatGPT / GPT-4") is the paid upgrade. Go to "chat.openai.com", create and account, and ask it "What can you do?"
+
+Example: "In one complex sentence, explain what you are and how you can be used effectively."
+
+> GPT-4: "I am ChatGPT, a state-of-the-art language model developed by OpenAI, based on the GPT-4 architecture, designed to understand and generate human-like text based on the input provided, and when used effectively, I can assist users in a myriad of tasks ranging from answering questions and providing explanations to creative writing and problem-solving."
+
+Example: "How can open a dataset in R, and plot the data?"
+
+GPT-4:
+
+"To open a dataset in R and plot the data, you'd typically follow these general steps:
+
+1.  **Load necessary libraries**: To handle data and plot it, you might want to use libraries like `tidyverse` which includes both `ggplot2` for plotting and `readr` for reading data.
+
+    ``` r
+    install.packages("tidyverse")
+    library(tidyverse)
+    ```
+
+2.  **Import your dataset**: Depending on the format of your dataset (e.g., CSV, Excel, RData), you'd use different functions. For a CSV file:
+
+    ``` r
+    dataset <- read_csv("path_to_your_file.csv")
+    ```
+
+3.  **Inspect your data**: Before plotting, always take a moment to inspect your data to understand its structure.
+
+    ``` r
+    head(dataset)
+    ```
+
+4.  **Plot the data**: With `ggplot2`, you can make a variety of plots. Here's a simple scatter plot assuming you have variables named `x` and `y`:
+
+    ``` r
+    ggplot(dataset, aes(x=x, y=y)) + geom_point() + theme_minimal()
+    ```
+
+The above steps offer a very basic introduction. Both the process of importing data and creating plots have many nuances depending on the specifics of your dataset and the type of visualization you want to create. It would be helpful to consult the `tidyverse` and `ggplot2` documentation for more detailed information. "
+
+On with our tutorial...
+
+------------------------------------------------------------------------
+
 ## Training
 
 I'm creating this as I'm learning R through Coursera. For information on the course I'm taking to kick-off this project:
 
-#### Coursera
-
-[Data Analysis with R Programming](https://www.coursera.org/learn/data-analysis-r/home/welcome)
+#### Coursera : [Data Analysis with R Programming](https://www.coursera.org/learn/data-analysis-r/home/welcome)
 
 ```         
 [Data Analysis with R Programming](https://www.coursera.org/learn/data-analysis-r/home/welcome) 
@@ -83,7 +142,7 @@ I'm creating this as I'm learning R through Coursera. For information on the cou
 
 I will also be implementing strategies I find from any helpful resources, including the native help documentation, YouTube videos, TikTok posts, articles, and of course: GPT-4! I'll link to anything I find that is useful.
 
-One perfect example of a resource is the YouTube video: "[Learn R in 39 minutes](https://www.youtube.com/watch?v=yZ0bV2Afkjc "YouTube: Learn R in 39 minutes")" by Equitable Equations. This video was comprehensive but not too long. The last portion of the video informed me about RMarkdown documents (which I'm using to write this now). Definitely subscribe to his channel.
+One perfect example of a resource is the YouTube video: "[Learn R in 39 minutes](https://www.youtube.com/watch?v=yZ0bV2Afkjc "YouTube: Learn R in 39 minutes")" by **Equitable Equations.** This video was comprehensive but not too long. The last portion of the video informed me about RMarkdown documents (which I'm using to write this now). Definitely subscribe to his channel.
 
 With all that established, let's get to learning R.
 
@@ -95,13 +154,13 @@ To get started on this reference guide, I asked ChatGPT-4 to summarize.
 
 #### BACKGROUND OF R per GPT-4:
 
-The "R" in R programming doesn't officially stand for anything. The language was named "R" by its creators, Ross Ihaka and Robert Gentleman, from the University of Auckland, New Zealand. It can be viewed as a play on their names' initial letter.
-
-However, the language is also considered as an implementation of the S programming language, so sometimes "R" is referred to as a sort of play on the name "S".
-
-S was created by John Chambers and colleagues at Bell Laboratories.
-
-R has become a go-to language for statistical computing and graphics, widely used among statisticians and data analysts.
+> *The "R" in R programming doesn't officially stand for anything. The language was named "R" by its creators, Ross Ihaka and Robert Gentleman, from the University of Auckland, New Zealand. It can be viewed as a play on their names' initial letter.*
+>
+> *However, the language is also considered as an implementation of the S programming language, so sometimes "R" is referred to as a sort of play on the name "S".*
+>
+> *S was created by John Chambers and colleagues at Bell Laboratories.*
+>
+> *R has become a go-to language for statistical computing and graphics, widely used among statisticians and data analysts."*
 
 ------------------------------------------------------------------------
 
@@ -111,11 +170,15 @@ IF you are reading this in RStudio Cloud / Posit Cloud or in GitHub or online in
 
 *If you are a GitHub user and you're not reading this there, my profile is [darrellwolfe](https://github.com/darrellwolfe "GitHub_darrellwolfe"), and my repository for this project is [R_Analysis](https://github.com/darrellwolfe/R_Analysis "GitHub_R_Analysis").*
 
-If you choose to download, you will want to install both: 1. R - That is the code and operating system information you need running in the background. 2. RStudio - That is the Graphic User Interface (GUI) that you will primarily interact with.
+If you choose to download RStudio Desktop, you will want to install both:
+
+1.  R - That is the code and operating system information you need running in the background.
+
+2.  RStudio - That is the Graphic User Interface (GUI) that you will primarily interact with.
 
 ------------------------------------------------------------------------
 
-#### Download: [Download_R_And_RStudio_Here](https://posit.co/download/rstudio-desktop/)
+#### Download: [Download both_R_And_RStudio_Here](https://posit.co/download/rstudio-desktop/)
 
 ```{r echo = TRUE}
 #### Download: [Download_R_And_RStudio_Here](https://posit.co/download/rstudio-desktop/)
@@ -140,13 +203,99 @@ In your session of RStudio (or RStudio Cloud) type:
 
 To see which version of RStudio you are on, type 'version' (without the quotes) place cursor in the same line as the code, press Ctrl+Enter. You should get a result like this:
 
-```{r echo = FALSE}
+```{r echo = TRUE}
 version
+
 ```
 
 ------------------------------------------------------------------------
 
-## RStudio Tour
+## The Basics of R
+
+Here are the things you NEED to know to get started. This won't be comprehensive, just an overview of the basic syntax, vocab, etc.
+
+*NOTE: MAC vs PC - I am going to say Ctrl+, if you use Mac, you know to use Command instead.*
+
+### 1. RUN (or EXCUTE) COMMANDS
+
+To run a command, place your cursor in the line of code (or highlight if multiple lines) B. Press Ctrl+Enter (or Command+Enter for Mac)
+
+Except website links, for those [Ctrl+(Left Click with Mouse)]
+
+Example:
+
+```{R echo = TRUE}
+print("Hello, World!")  # Type this in your session, place your cursor on the line, Press Ctrl+Enter
+```
+
+### 2. COMMENTS
+
+The hash-tag/number sign (\#) is a comment marker, R ignores everything after Comments \#
+
+```{R eval=FALSE, include=TRUE}
+installed.packages() #Comments can come after live code too! Click here() then Ctrl+Enter
+```
+
+### 3. WHERE is stuff?
+
+This is based on the default layout, you can also move these around:
+
+#### Top Left - Source -
+
+This text-box-area you may do most of your active writing within. You may have several files/windows open at once, writing code in each. You can have files/windows of different types (R, SQL, HTML, Text, VBA, etc.) open at once.
+
+If you use Ctrl+F - a Find and Replace capability will work just like it does in Word or Excel.
+
+If you run the following three in order, the "view" function will open a tab in this section of RStudio
+
+```         
+library(tidyverse) # Cursor on this line, Press Ctrl+Enter
+library("palmerpenguins") # Cursor on this line, Press Ctrl+Enter
+view(penguins) # Cursor on this line, Press Ctrl+Enter
+```
+
+#### Bottom Left - Console -
+
+Below the Source is the "Console" area. Commands can be typed directly into the console too; however, they don't get saved that way. Commands may give a Warning or Error, read those. Command outputs show in the console, that is its primary function.
+
+*NOTE: Commands ARE case sensitive library() and Library() are not the same.*
+
+#### Top Right - Environment -
+
+Environment tab will tell you which libraries and datasets you have open (loaded)
+
+History will tell you what you have been doing.
+
+Connections will tell if you have a live connection to the database.
+
+Git (if a GitHub project is loaded) is to create a new Project with an existing GitHub repo.
+
+*To do this:* File \> New Project \> Version Control \> Git (then paste link from GitHub)
+
+*To open an existing GitHub Project* File \> Open Project (navigate to the folder, click on the "NameOfFile.R" file) Tutorials - will walk you through the basics of R.
+
+### Bottom Right - Files -
+
+Lets you navigate all the files on your PC.
+
+*Note: You can import a .csv or .xls file from this section.*
+
+*To do this:* Navigate to the file from within the Files window, right click file, "Import"
+
+Plots is where your visuals will appear once you create them.
+
+Packages - Lists your packages, click the name to read about the package.
+
+Help - Type a "?" in front of any command or name, run the command, info will appear in Help.
+
+```{R eval=FALSE, include=FALSE}
+?library(tidyverse)  Cursor on this line, Press Ctrl+Enter 
+?tidyverse  Cursor on this line, Press Ctrl+Enter
+```
+
+------------------------------------------------------------------------
+
+## RStudio Visual Tour
 
 ### RStudio Desktop
 
@@ -184,35 +333,31 @@ Optional but recommended. If you create a GitHub Repository, then link that repo
 
 ![](y.Images/RStudio_Desktop_Right_Top_GitHub.jpg)
 
-
-
-
-
-
-
-
-
 ------------------------------------------------------------------------
 
 ## R \<- 101
 
-At its core, R is a place to build and run RStudio R code. However, RStudio has evolved to be a full-service code editor. I have grown to enjoy it more than Visual Studio. Here are few intro to RStudio items that you can use right now on your own session.
+At its core, R is a place to build and run RStudio R code. However, RStudio has evolved to be a full-service code editor (R, SQL, Python, HTML, and more). I have grown to enjoy it more than Visual Studio.
+
+Even more basic than R, RStudio can operate as a calculator.
+
+Here are few intro to RStudio items that you can use right now on your own session just to get used to running commands or math in the editor.
 
 ### Calculator
 
 ##### Basic Math
 
-```{R echo = FALSE}
-1+1
+```{R echo=TRUE}
+1+1 #Now run this calculation, place cursor on this line and then Ctrl+Enter
 ```
 
 ##### Variables
 
 Note: To assign a variable use (\<-). While you can use (=), don't for reasons I don't fully understand yet.
 
-```{R echo = FALSE}
-x <- 10 #This assigns the variable, place cursor here and then Ctrl+Enter
-10 * x #Now run this calculation, place cursor here and then Ctrl+Enter
+```{R echo=TRUE}
+x <- 10 #This assigns the variable, place cursor on this line and then Ctrl+Enter
+10 * x #Now run this calculation, place cursor on this line and then Ctrl+Enter
 ```
 
 ##### Vectors
@@ -244,24 +389,20 @@ This would output `76`, the sum of 10, 1, 5, and 60.
 
 R has many functions to manipulate vectors, including mathematical operations, sorting, and statistical analysis. These are one of the basic data structures of R and fundamental to how it operates. "
 
-```{R echo = FALSE}
-my_vector <- c(10,1,5,60)
-sum(my_vector)
+```{R echo=TRUE}
+my_vector <- c(10,1,5,60) #Now run this calculation, place cursor on this line and then Ctrl+Enter
+sum(my_vector) #Now run this calculation, place cursor on this line and then Ctrl+Enter
 ```
 
 ### Help
+
 If you need to understand something or how a code works you can place a question mark in front of any code and run that. It will show up in your Help tab at the bottom right.
 
-```{R echo = FALSE}
-?print()
-?c()
-?library(tidyverse)
+```{R eval=FALSE, include=TRUE}
+?print() #Now run this calculation, place cursor on this line and then Ctrl+Enter
+?c() #Now run this calculation, place cursor on this line and then Ctrl+Enter
+?library(tidyverse) #Now run this calculation, place cursor on this line and then Ctrl+Enter
 ```
-
-
-
-
-
 
 ------------------------------------------------------------------------
 
@@ -271,17 +412,17 @@ If you need to understand something or how a code works you can place a question
 
 Packages are built either by Posit directly or by various third parties and users. One of the (if not the) first packages you will install is "tidyverse", which has become an industry standard package, providing several functionalities that are used frequently.
 
-Packages come with datasets, new functionality, and other items. \# In some rare cases, packages can come with conflicting functions (meaning two packages could assign the same name to different functions within the package), but most of this is circumvented by which library you have loaded.
+Packages come with datasets, new functionality, and other items. In some rare cases, packages can come with conflicting functions (meaning two packages could assign the same name to different functions within the package), but most of this is circumvented by which library you have loaded.
 
 ### Install a Package
 
 On your machine, run the following:
 
-install.packages("tidyverse") \# then Ctrl+Enter
+install.packages("tidyverse") then Ctrl+Enter
 
 You should see this:
 
-```{r echo = FALSE}
+```{r eval=FALSE, include=TRUE}
 install.packages("tidyverse") # You can place your cursor anywhere on this line and it would run in your RStudio
 
 ```
@@ -290,7 +431,7 @@ install.packages("tidyverse") # You can place your cursor anywhere on this line 
 
 To see which packages are already installed, place cursor in the same line as the code, press Ctrl+Enter: installed.packages()
 
-```{r echo= FALSE}
+```{r eval=FALSE, include=TRUE}
 installed.packages() #Ctrl+Enter}
 
 # Example ![](y.Images/installed.packages.jpg)
@@ -301,9 +442,17 @@ The print out is long on installed.packages, but it will tell you every package 
 
 ![](y.Images/installed.packages.jpg)
 
-To install packages, place cursor in the same line as the code, press Ctrl+Enter: \# This is the first package you should install, it is one of the first everyone installs after the basic load-in. install.packages("tidyverse")
+To install packages, place cursor in the same line as the code, press Ctrl+Enter: "tidyverse" is the first package you should install, it is one of the first everyone installs after the basic load-in.
 
-To load the library from installed packages, place cursor in the same line as the code, press Ctrl+Enter: \# This is your first installed library, you will use this often. More on that later. library(tidyverse)
+```         
+install.packages("tidyverse")
+```
+
+To load the library from installed packages, place cursor in the same line as the code, press Ctrl+Enter: This is your first installed library, you will use this often. More on that later.
+
+```         
+library(tidyverse)
+```
 
 ## Libraries
 
@@ -319,98 +468,83 @@ You will load the packages you want to use by using "library".
 
 Example:
 
-Library(tidyverse) #Ctrl+Enter \# This probably gives you an error.
+```         
+Library(tidyverse) #Ctrl+Enter This probably gives you an error.
+```
 
 vs
 
-library(tidyverse) #Ctrl+Enter \# This probably works.
+```         
+library(tidyverse) #Ctrl+Enter This probably works.
+```
 
 ```{r echo = FALSE}
 library(tidyverse) #Ctrl+Enter
 
 ```
 
+------------------------------------------------------------------------
 
+## Change Appearance
 
+To change the appearance of your desktop, or theme do the following:
 
+1.  From the Tools menu at the top of the page, select "Global Options" at the bottom of the list.
 
+2.  From the left hand menu, select "Appearance".
 
+3.  Select the editor themes until you find one you like.
 
+4.  Click Apply, then click OK to save.
 
+[![Change Appearance](y.Images/RStudio_Desktop_Change_Appearance.jpg){width="606"}](Change%20Appearance)
 
+------------------------------------------------------------------------
 
+## Viewing Data
 
+In R, there are several different ways of viewing information within a dataset. If the set is small (Ex: five columns, fifteen rows), using view() or looking at it in a CSV or Excel works fine. But for most Data Analysts, the datasets will be large, hundreds, thousands, or even millions of rows of data. R gives us different options to understand the dataset we are working with, without loading it into an Excel sheet.
 
+GPT-4 Summarizes:
 
+> Certainly! Here's a short summary of options in R to view information about a dataset:
+>
+> 1.  **dim(dataset)**: Returns the dimensions (number of rows and columns) of the dataset.
+> 2.  **colnames(dataset)**: Retrieves the column names of the dataset.
+> 3.  **rownames(dataset)**: Retrieves the row names of the dataset.
+> 4.  **summary(dataset)**: Provides a statistical summary of each column in the dataset.
+> 5.  **str(dataset)**: Displays the structure of the dataset including data types and the first few entries.
+> 6.  **head(dataset, n)**: Shows the first `n` rows of the dataset (default is 6).
+> 7.  **tail(dataset, n)**: Shows the last `n` rows of the dataset (default is 6).
+> 8.  **View(dataset)**: Opens the dataset in a spreadsheet-like viewer (RStudio specific).
+> 9.  **glimpse(dataset)** (tidyverse): Offers a transposed version of `str()`, making it more concise especially for datasets with many columns.
+> 10. **dplyr::tbl_sum(dataset)** (tidyverse): Briefly summarizes the dataset, displaying its type and dimensions.
+> 11. **skimr::skim(dataset)**: Produces a detailed summary of each variable including histograms (from the skimr package).
+>
+> Each of these commands provides a different perspective on the dataset, helping the user to understand its structure, content, and key statistical properties.
 
+------------------------------------------------------------------------
 
+## Left Off here...
 
+To Be Continued...
 
+Class Project: getting a quick summary view of the data to understand quickly the answer to a question, such as, "What is the penguin type with the shortest flipper?
 
+```{r eval=FALSE, include=TRUE}
+library(dplyr)
 
-# The Basics of R
+result \<- penguins %\>%
 
-\# Here are the things you NEED to know to get started. \# This won't be comprehensive, just an overview of the basic syntax, vocab, etc. \# MAC vs PC - I am going to say Ctrl+, if you use Mac, you know to use Command instead.
+drop_na() %\>%
 
-# 1. RUN (or EXCUTE) COMMANDS
+group_by(species, sex) %\>%
 
-\# A. To run a command, place your cursor in the line of code \# (or highlight if multiple lines) \# B. Press Ctrl+Enter (or Command+Enter for Mac) \# Except website links, for those [Ctrl+(Left Click with Mouse)]
+summarise(min_flipper_length = min(flipper_length_mm))
 
-\# Example: print("Hello, World!") \# Cursor on this line, Press Ctrl+Enter
-
-# 2. COMMENTS
-
-\# \<- That hash-tag/number sign (\#) is a comment marker, R ignores everything after Comments #, ##, ###, installed.packages() #Comments can come after live code too! Click here() then Ctrl+Enter
-
-# 3. WHERE is stuff?
-
-\# Top Left - xxx - This text-box-area you're reading in right now is the xxxx \# You may have several files/windows open at once, writing code in each. \# You can have files/windows of different types (R, SQL, HTML, Text, VBA, etc.) open at once. \# If you use Ctrl+F - a Find and Replace capability will work just like it does in Word or Excel. \# If you run the following three in order, \# the "view" function will open a tab in this section of RStudio
-
-```         
-library(tidyverse) # Cursor on this line, Press Ctrl+Enter
-library("palmerpenguins") # Cursor on this line, Press Ctrl+Enter
-view(penguins) # Cursor on this line, Press Ctrl+Enter
+print(result)
 ```
 
-\# Bottom Left - Console - Below in the "Console" area. \# Commands can be typed directly into the console too; however, they don't get saved that way. \# Commands may give a Warning or Error, read those. \# Command outputs show in the console, that is its primary function. \# NOTE: Commands ARE case sensitive library() and Library() are not the same.
-
-\# Top Right - \# Environment - This will tell you which libraries and datasets you have open (loaded) \# History - This will tell you what you have been doing. \# Connections - If you have a live connection to the database, you can see that here. \# Git (if a GitHub project is loaded) - \# To create a new Project with an existing GitHub repo, \# DO: File \> New Project \> Version Control \> Git (then paste link from GitHub) \# To open an existing Project \# DO: File \> Open Project (navigate to the folder, click on the "NameOfFile.R" file) \# Tutorials - will walk you through the basics of R.
-
-\# Bottom Right - \# Files - Lets you navigate all the files on your PC. \# Note: You can import a .csv or .xls file from this section. \# DO: Navigate to file from within the Files window, right click file, "Import" \# Plots - This is where your visuals will appear once you create them. \# Packages - Lists your packages, click the name to read about the package. \# Link will load in the Help tab. \# Help - Type a "?" in front of any command or name, run the command, info will appear in Help. ?library(tidyverse) \# Cursor on this line, Press Ctrl+Enter ?tidyverse \# Cursor on this line, Press Ctrl+Enter
-
-# 4. BASIC FUNCTIONALITY
-
-```         
-# At base level, it can operate like a scientific calculator
-
-1+1 # Cursor on this line, Press Ctrl+Enter (repeat for each line going-forward)
-    # Below in the Console, you should see [1] 2
-      # [1] - First line of code
-      # 2 - The Answer to 1+1
-
-2*18 # Try this, should see 36
-  # [1] 36
-
-# Variables
-  # When assigning variables, give it a name of one letter or more.
-    # Never start a variable with a number (1Name) but numbers can come after (Name_1)
-  # Assign variables using Arrow, Line (<-). 
-  # Equals sign (=) works, but don't use it for technical reasons that come up later.
-  # Note: If you actually want to have something equal something use double equals signs (==)
-    # Example: (x == y)
-
-# Playing with Variables
-
-x <- 10 # Run this, it is now stored as long as you have this session open
-        # See the Environment window to the left to see what x is now.
-
-5 * x # Now run this.
-  # [1] 50
-
-y <- c(2,4,6,8) #This is a vector, run this
-  
-x * y # Now run this. 
-  # [1] 20 40 60 80
-```
+------------------------------------------------------------------------
 
 # TO BE CONTINUED...
