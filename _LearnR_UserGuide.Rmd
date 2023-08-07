@@ -735,7 +735,7 @@ ggplot(data = penguins) + geom_point(mapping = aes(x = flipper_length_mm, y = bo
 
 -   ggplot(data = penguins) - Creates the coordinate system to add layers on.
 
--   geom_point() - Scatterplot vs goem_bar - bar chart - "A geom is the geometric object used to represent your data. In this case, the function geom_point() tells R to represent your data with points. The ggplot() function creates a coordinate system that you can add layers to. The first argument of the ggplot() function is the dataset to use in the plot. In this case, it\'s \"penguins.\"" - Coursera, Week 4, Hands-On Activity
+-   geom_point() - Scatterplot vs goem_bar - bar chart - "A geom is the geometric object used to represent your data. In this case, the function geom_point() tells R to represent your data with points. The ggplot() function creates a coordinate system that you can add layers to. The first argument of the ggplot() function is the dataset to use in the plot. In this case, it's "penguins."" - Coursera, Week 4, Hands-On Activity
 
 -   (mapping = aes(x=,y=)) - What figures to place where on vizualization.
 
