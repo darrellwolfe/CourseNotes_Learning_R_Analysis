@@ -701,9 +701,48 @@ ggplot(quartet, aes(x,y)) + geom_point() + geom_smooth(method=lm,se=FALSE) + fac
 # Taking the above summary, and then visualizing the data may tell a story that the numbers themslves did not. 
 ```
 
-### Placeholder
+### Visualizing penguins data with ggplot2
 
-```{r eval=FALSE, include=TRUE}
+In this section, we take the Palmer Penguins dataset, and plot it using ggplot2. See also, the [ggplot2 Cheat Sheet](https://ggplot2.tidyverse.org/).
+
+Install.packages
+
+```{r eval=TRUE, include=TRUE}
+
+install.packages("ggplot2")
+install.packages("palmerpenguins")
+```
+
+Load libraries
+
+```{r eval=TRUE, include=TRUE}
+
+library(ggplot2)
+library(palmerpenguins)
+```
+
+View the dataset:
+
+```{r eval=TRUE, include=TRUE}
+
+data("penguins")
+View(penguins)
+```
+
+Explained:
+
+ggplot(data = penguins) + geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g))
+
+-   ggplot(data = penguins) - Creates the coordinate system to add layers on.
+
+-   geom_point() - Scatterplot vs goem_bar - bar chart - "A geom is the geometric object used to represent your data. In this case, the function geom_point() tells R to represent your data with points. The ggplot() function creates a coordinate system that you can add layers to. The first argument of the ggplot() function is the dataset to use in the plot. In this case, it\'s \"penguins.\"" - Coursera, Week 4, Hands-On Activity
+
+-   (mapping = aes(x=,y=)) - What figures to place where on vizualization.
+
+-   aes(): "In the ggplot2 package of R, the function aes() stands for"aesthetic mappings." When you're using ggplot2 to create visualizations, you often use aes() to map variables in your data to visual properties (or "aesthetics") of the plot, such as the x and y position, color, size, shape, etc." GPT-4
+
+```{r eval=TRUE, include=TRUE}
+ggplot(data = penguins) + geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g))
 
 ```
 
