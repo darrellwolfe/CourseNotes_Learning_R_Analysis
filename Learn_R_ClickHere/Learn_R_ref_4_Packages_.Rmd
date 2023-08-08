@@ -1,0 +1,147 @@
+# Packages
+
+GPT-4 explains what an R package is:
+
+> "In R and RStudio, a"package" is a collection of functions, data sets, and documentation bundled together. A package provides a way to distribute and share R code and related material with others. They can be thought of as an extension or add-on to the base R system, allowing users to tap into specialized functionality for specific tasks or domains.
+>
+> The R community has developed thousands of packages, which are available on the Comprehensive R Archive Network (CRAN) and other repositories. These packages cover a vast range of topics and methods, from statistical techniques and data manipulation to graphical display and interactive applications.
+>
+> In RStudio, you can easily install and manage packages using the "Packages" pane, which provides a user-friendly interface for these tasks. Once a package is installed, you need to use the `library()` function to load it into your current R session to access its functions and datasets."
+
+------------------------------------------------------------------------
+
+## Packages How To
+
+To install a new package:
+
+```{r}
+install.packages("")
+```
+
+To check which packages are installed:
+
+```{r eval=FALSE, include=TRUE}
+installed.packages()
+```
+
+------------------------------------------------------------------------
+
+## Package Links
+
+Here are links to helpful lists of packages or descriptions of particularly useful packages.
+
+------------------------------------------------------------------------
+
+## Posit Recommended Packages - Quick list of useful R packages
+
+[Quick list of useful R packages_by Posit](https://support.posit.co/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages)
+
+------------------------------------------------------------------------
+
+## Darrell's Most Used Packages (updated periodically)
+
+To install a package:
+
+```{r eval=FALSE, include=TRUE}
+
+install.packages()
+```
+
+The packages I'm using most these days:
+
+### Data Cleaning and Handling in R
+
+```{r eval=FALSE, include=TRUE}
+install.packages("tidyverse")
+install.packages("ggplot2")
+install.packages("shiny")
+install.packages("htmltools")
+
+
+
+
+```
+
+------------------------------------------------------------------------
+
+### R & SQL Server Databases - Part 1 Writing R in RStudio, with a SQL Database
+
+GPT-4: If you're working with SQL Server in R, there are several R packages that can help you connect to, retrieve, and manipulate data. Here are some of the most widely-used ones:
+
+1.  **`RODBC`**: This is one of the older and more established packages for ODBC database connections in R. As the name implies, it uses the ODBC (Open Database Connectivity) drivers to establish connections.
+
+    ``` r
+    install.packages("RODBC")
+    ```
+
+    -   Usage:
+
+    ``` r
+    library(RODBC)
+    connection <- odbcConnect("DSN_NAME", uid="YOUR_USER_ID", pwd="YOUR_PASSWORD")
+    data <- sqlFetch(connection, "TABLE_NAME")
+    close(connection)
+    ```
+
+2.  **`DBI` and `odbc`**: `DBI` is a modern database interface for R, and the `odbc` package, which builds on `DBI`, provides a way to establish ODBC connections.
+
+    ``` r
+    install.packages("DBI")
+    install.packages("odbc")
+    ```
+
+    -   Usage:
+
+    ``` r
+    library(DBI)
+    library(odbc)
+    connection <- dbConnect(odbc(), "DSN_NAME", UID="YOUR_USER_ID", PWD="YOUR_PASSWORD")
+    data <- dbGetQuery(connection, "SELECT * FROM TABLE_NAME")
+    dbDisconnect(connection)
+    ```
+
+3.  **`RSQLServer`**: This package is a DBI-compliant interface specifically for SQL Server. It might be more intuitive if you're exclusively working with SQL Server.
+
+    ``` r
+    # Using devtools to install from GitHub
+    devtools::install_github('imanbio/RSQLServer')
+    ```
+
+    -   Usage:
+
+    ``` r
+    library(RSQLServer)
+    connection <- dbConnect(RSQLServer::SQLServer(), url="jdbc:sqlserver://SERVER_NAME;databaseName=DB_NAME", user="YOUR_USER_ID", password="YOUR_PASSWORD")
+    data <- dbGetQuery(connection, "SELECT * FROM TABLE_NAME")
+    dbDisconnect(connection)
+    ```
+
+4.  **`pool`**: This is an auxiliary package that can be used in combination with the others. It allows you to manage and optimize your database connections using connection pooling, which can be particularly helpful when building Shiny apps that connect to databases.
+
+    ``` r
+    install.packages("pool")
+    ```
+
+When selecting a package, consider the specific features you need, as well as any dependencies. For example, `RODBC` might require configuration of an ODBC Data Source Name (DSN), while `RSQLServer` uses JDBC. In general, the `DBI` and `odbc` combination is widely adopted and offers a good mix of features and ease of use.
+
+### R & SQL Server Databases - Part 2 Writing SQL in RStudio
+
+In RStudio, in the Top Right (default layout) panel, there is a Connections tab.
+
+1.  Click "New Connection" \> Pop-up window appears "Connect to Existing Data Sources"
+
+2.  Select the data source you want to us. If you are already connected to an existing database, your Studio may recognize that server and connect automatically.
+
+------------------------------------------------------------------------
+
+### Title
+
+TEXT
+
+````         
+``` r
+install.packages("")
+```
+````
+
+# UNDER CONSTRUCTION.............
