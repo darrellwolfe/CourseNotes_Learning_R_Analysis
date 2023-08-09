@@ -2,11 +2,11 @@
 
 GPT-4 explains what an R package is:
 
-> "In R and RStudio, a"package" is a collection of functions, data sets, and documentation bundled together. A package provides a way to distribute and share R code and related material with others. They can be thought of as an extension or add-on to the base R system, allowing users to tap into specialized functionality for specific tasks or domains.
+> "In R and RStudio, a "package" is a collection of functions, data sets, and documentation bundled together. A package provides a way to distribute and share R code and related material with others. They can be thought of as an extension or add-on to the base R system, allowing users to tap into specialized functionality for specific tasks or domains.
 >
 > The R community has developed thousands of packages, which are available on the Comprehensive R Archive Network (CRAN) and other repositories. These packages cover a vast range of topics and methods, from statistical techniques and data manipulation to graphical display and interactive applications.
 >
-> In RStudio, you can easily install and manage packages using the "Packages" pane, which provides a user-friendly interface for these tasks. Once a package is installed, you need to use the `library()` function to load it into your current R session to access its functions and datasets."
+> In RStudio, you can easily install and manage packages using the "Packages" pane, which provides a user-friendly interface for these tasks. Once a package is installed, you need to use the library() function to load it into your current R session to access its functions and datasets."
 
 ------------------------------------------------------------------------
 
@@ -14,7 +14,7 @@ GPT-4 explains what an R package is:
 
 To install a new package:
 
-```{r}
+```{r eval=FALSE, include=TRUE}
 install.packages("")
 ```
 
@@ -70,78 +70,234 @@ GPT-4: If you're working with SQL Server in R, there are several R packages that
 
 1.  **`RODBC`**: This is one of the older and more established packages for ODBC database connections in R. As the name implies, it uses the ODBC (Open Database Connectivity) drivers to establish connections.
 
-    ``` r
+```{r eval=FALSE, include=TRUE}
     install.packages("RODBC")
-    ```
+```
 
     -   Usage:
 
-    ``` r
+```{r eval=FALSE, include=TRUE}
     library(RODBC)
     connection <- odbcConnect("DSN_NAME", uid="YOUR_USER_ID", pwd="YOUR_PASSWORD")
     data <- sqlFetch(connection, "TABLE_NAME")
     close(connection)
-    ```
+```
 
 2.  **`DBI` and `odbc`**: `DBI` is a modern database interface for R, and the `odbc` package, which builds on `DBI`, provides a way to establish ODBC connections.
 
-    ``` r
+```{r eval=FALSE, include=TRUE}
     install.packages("DBI")
     install.packages("odbc")
-    ```
+```
 
     -   Usage:
 
-    ``` r
+```{r eval=FALSE, include=TRUE}
     library(DBI)
     library(odbc)
     connection <- dbConnect(odbc(), "DSN_NAME", UID="YOUR_USER_ID", PWD="YOUR_PASSWORD")
     data <- dbGetQuery(connection, "SELECT * FROM TABLE_NAME")
     dbDisconnect(connection)
-    ```
+```
 
 3.  **`RSQLServer`**: This package is a DBI-compliant interface specifically for SQL Server. It might be more intuitive if you're exclusively working with SQL Server.
 
-    ``` r
+```{r eval=FALSE, include=TRUE}
     # Using devtools to install from GitHub
     devtools::install_github('imanbio/RSQLServer')
-    ```
+```
 
-    -   Usage:
+ -   Usage:
 
-    ``` r
+```{r eval=FALSE, include=TRUE}
     library(RSQLServer)
     connection <- dbConnect(RSQLServer::SQLServer(), url="jdbc:sqlserver://SERVER_NAME;databaseName=DB_NAME", user="YOUR_USER_ID", password="YOUR_PASSWORD")
     data <- dbGetQuery(connection, "SELECT * FROM TABLE_NAME")
     dbDisconnect(connection)
-    ```
+```
 
 4.  **`pool`**: This is an auxiliary package that can be used in combination with the others. It allows you to manage and optimize your database connections using connection pooling, which can be particularly helpful when building Shiny apps that connect to databases.
 
-    ``` r
+```{r eval=FALSE, include=TRUE}
     install.packages("pool")
-    ```
+```
 
 When selecting a package, consider the specific features you need, as well as any dependencies. For example, `RODBC` might require configuration of an ODBC Data Source Name (DSN), while `RSQLServer` uses JDBC. In general, the `DBI` and `odbc` combination is widely adopted and offers a good mix of features and ease of use.
 
+------------------------------------------------------------------------
 ### R & SQL Server Databases - Part 2 Writing SQL in RStudio
 
 In RStudio, in the Top Right (default layout) panel, there is a Connections tab.
 
 1.  Click "New Connection" \> Pop-up window appears "Connect to Existing Data Sources"
 
-2.  Select the data source you want to us. If you are already connected to an existing database, your Studio may recognize that server and connect automatically.
+2.  Select the data source you want to us.
+
+    1.  If you are already connected to an existing database, your Studio may recognize that server and connect automatically.
+
+3.  Click Connect
+
+4.  Click R Console - to see results inside RStudio Editor/Console
+
+5.  In the editor, at the top of the page, you need to have this code to view SQL results live from the database: \-- !preview conn=con (see image below).
+
+6.  Write your SQL Query
+
+7.  Click "Preview" at the top right of the editor window to see results down in the Console / SQL Results
+
+    1.  Alternatively, click the check mark box "Preview on Save", in which case you can use Ctrl+S to save and see results instantly without going for the mouse.
+    
+------------------------------------------------------------------------
+#### See Images paired with these instructions:
+
+![](images/RStudio_Desktop_Right_Top_Connection.jpg){width="494"}
+
+![Connections Native Server Database](images/RStudio_Desktop_Right_Top_Connection_GRM%201.jpg)
+
+![Connections R Console](images/RStudio_Desktop_Right_Top_Connection_GRM%202.jpg)
+
+![Connections Opens in Console Editor](images/RStudio_Desktop_Right_Top_Connection_GRM%203.jpg)
+
+![Console Editor results can be seen below editor](images/RStudio_Desktop_Right_Top_Connection_GRM 4.jpg)
 
 ------------------------------------------------------------------------
 
+### HTML in RStudio
+
+TEXT
+
+
+```{r eval=FALSE, include=TRUE}
+install.packages("")
+```
+
+
+END
+
+GPT-4 on HTML in RStudio
+
+If you're working with SQL Server in R, there are several R packages that can help you connect to, retrieve, and manipulate data. Here are some of the most widely-used ones:
+
+1. **`RODBC`**:
+   - This is one of the older and more established packages for ODBC database connections in R. As the name implies, it uses the ODBC (Open Database Connectivity) drivers to establish connections.
+```{r eval=FALSE, include=TRUE}
+   install.packages("RODBC")
+```
+   - Usage:
+```{r eval=FALSE, include=TRUE}
+
+   library(RODBC)
+   connection <- odbcConnect("DSN_NAME", uid="YOUR_USER_ID", pwd="YOUR_PASSWORD")
+   data <- sqlFetch(connection, "TABLE_NAME")
+   close(connection)
+```
+
+2. **`DBI` and `odbc`**:
+   - `DBI` is a modern database interface for R, and the `odbc` package, which builds on `DBI`, provides a way to establish ODBC connections.
+
+```{r eval=FALSE, include=TRUE}
+   install.packages("odbc")
+```
+   - Usage:
+```{r eval=FALSE, include=TRUE}
+   library(DBI)
+   library(odbc)
+   connection <- dbConnect(odbc(), "DSN_NAME", UID="YOUR_USER_ID", PWD="YOUR_PASSWORD")
+   data <- dbGetQuery(connection, "SELECT * FROM TABLE_NAME")
+   dbDisconnect(connection)
+```
+
+3. **`RSQLServer`**:
+   - This package is a DBI-compliant interface specifically for SQL Server. It might be more intuitive if you're exclusively working with SQL Server.
+```{r eval=FALSE, include=TRUE}
+   # Using devtools to install from GitHub
+   devtools::install_github('imanbio/RSQLServer')
+```
+   - Usage:
+```{r eval=FALSE, include=TRUE}
+   library(RSQLServer)
+   connection <- dbConnect(RSQLServer::SQLServer(), url="jdbc:sqlserver://SERVER_NAME;databaseName=DB_NAME", user="YOUR_USER_ID", password="YOUR_PASSWORD")
+   data <- dbGetQuery(connection, "SELECT * FROM TABLE_NAME")
+   dbDisconnect(connection)
+```
+
+4. **`pool`**:
+   - This is an auxiliary package that can be used in combination with the others. It allows you to manage and optimize your database connections using connection pooling, which can be particularly helpful when building Shiny apps that connect to databases.
+```{r eval=FALSE, include=TRUE}
+install.packages("pool")
+```
+
+When selecting a package, consider the specific features you need, as well as any dependencies. For example, `RODBC` might require configuration of an ODBC Data Source Name (DSN), while `RSQLServer` uses JDBC. In general, the `DBI` and `odbc` combination is widely adopted and offers a good mix of features and ease of use.
+
+
+
+END for Now...
+------------------------------------------------------------------------
+# UNDER CONSTRUCTION.............
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
 ### Title
 
 TEXT
 
-````         
-``` r
+```{r eval=FALSE, include=TRUE}
 install.packages("")
 ```
-````
 
-# UNDER CONSTRUCTION.............
+END
+
+------------------------------------------------------------------------
+### Title
+
+TEXT
+
+```{r eval=FALSE, include=TRUE}
+install.packages("")
+```
+
+END
+
+------------------------------------------------------------------------
+### Title
+
+TEXT
+
+```{r eval=FALSE, include=TRUE}
+install.packages("")
+```
+
+END
+
+------------------------------------------------------------------------
+### Title
+
+TEXT
+
+```{r eval=FALSE, include=TRUE}
+install.packages("")
+```
+
+END
+
+------------------------------------------------------------------------
+### Title
+
+TEXT
+
+```{r eval=FALSE, include=TRUE}
+install.packages("")
+```
+
+END
+
+------------------------------------------------------------------------
+### Title
+
+TEXT
+
+```{r eval=FALSE, include=TRUE}
+install.packages("")
+```
+
+END
