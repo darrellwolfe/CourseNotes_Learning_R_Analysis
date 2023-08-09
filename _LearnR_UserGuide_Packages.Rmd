@@ -36,6 +36,10 @@ Here are links to helpful lists of packages or descriptions of particularly usef
 
 [Quick list of useful R packages_by Posit](https://support.posit.co/hc/en-us/articles/201057987-Quick-list-of-useful-R-packages)
 
+[R-ArcGIS Bridge](https://www.esri.com/en-us/arcgis/products/r-arcgis-bridge/overview)
+
+[Cloud.R-Project.Org CRAN Packages](https://cloud.r-project.org/web/packages/available_packages_by_name.html)
+
 ------------------------------------------------------------------------
 
 ## Darrell's Most Used Packages (updated periodically)
