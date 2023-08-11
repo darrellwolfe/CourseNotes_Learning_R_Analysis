@@ -24,7 +24,16 @@ ggplot(data = penguins) + geom_point(mapping = aes(x = flipper_length_mm, y = bo
 
 
 
+p <- ggplot(data = penguins) + 
+  geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g, color=species, shape = species, alpha=0.5)) +
+  labs(title = "Palmer Penguins: Body Mass vs Flipper Length", subtitle = "SubTitle Here", caption = "Data collected by Dr. Kristen Gorman, 2007-2009")
 
+
+p + annotate("text",x=220,y=3500,label="The Gentoos are the Largest", color = "purple",fontface = "bold", size=4.0, angle=25) +
+  facet_wrap(~species, nrow=2)
+#  geom_smooth()
+
+ggsave("Three Penguins with Facet WRap.png")
 
 
 

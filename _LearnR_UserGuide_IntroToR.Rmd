@@ -761,20 +761,260 @@ ggplot(data = penguins) +
 
 Adding layers to this plot:
 
-```{r eval=FALSE, include=TRUE}
+```{r eval=TRUE, include=TRUE}
+
+library(ggplot2)
+library(palmerpenguins)
 ggplot(data = penguins) + 
-  geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g, color=species, shape = species)) # , size = species This made it worse but was an option.
   
 
 ```
 
 ------------------------------------------------------------------------
 
-## Left Off here...
+## Annotating Viz
+
+We can add:
+
+-   Title - Bold top of visualization
+
+-   Subtitle - Smaller below title
+
+-   Caption - below graph
+
+-   Annotation - Label inside graph
+
+```{r eval=TRUE, include=TRUE}
+
+library(ggplot2)
+library(palmerpenguins)
+ggplot(data = penguins) + 
+  geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g, color=species, shape = species)) +
+labs(title = "Palmer Penguins: Body Mass vs Flipper Length", subtitle = "SubTitle Here", caption = "Data collected by Dr. Kristen Gorman, 2007-2009") +
+annotate("text",x=220,y=3500,label="The Gentoos are the Largest", color = "purple",fontface = "bold", size=4.0, angle=25)
+
+```
 
 ------------------------------------------------------------------------
 
-## Left Off here...
+## Assigning a variable to an entire plotted graph
+
+Type anything you want (letters before numbers) followed by the assignment (\<-) and place the ggplot after this. Than you can add things to the variable.
+
+```{r eval=TRUE, include=TRUE}
+
+library(ggplot2)
+library(palmerpenguins)
+
+
+p <- ggplot(data = penguins) + 
+  geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g, color=species, shape = species)) +
+labs(title = "Palmer Penguins: Body Mass vs Flipper Length", subtitle = "SubTitle Here", caption = "Data collected by Dr. Kristen Gorman, 2007-2009")
+
+
+psaved <- p + annotate("text",x=220,y=3500,label="The Gentoos are the Largest", color = "purple",fontface = "bold", size=4.0, angle=25)
+
+```
+
+------------------------------------------------------------------------
+
+## Saving Work
+
+In the Plots tab in RStudio, you can export the images (png, jpg, etc.) to a specified location.
+
+Alternatively, you can use `ggsave("Title.png")` and it will automatically save this to your RStudio Files.
+
+```{r eval=TRUE, include=TRUE}
+
+library(ggplot2)
+library(palmerpenguins)
+
+
+p <- ggplot(data = penguins) + 
+  geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g, color=species, shape = species)) +
+labs(title = "Palmer Penguins: Body Mass vs Flipper Length", subtitle = "SubTitle Here", caption = "Data collected by Dr. Kristen Gorman, 2007-2009")
+
+
+psaved <- p + annotate("text",x=220,y=3500,label="The Gentoos are the Largest", color = "purple",fontface = "bold", size=4.0, angle=25)
+
+ggsave("Three Penguins.png")
+
+
+```
+
+------------------------------------------------------------------------
+
+# Other ggplot2 options
+
+1.  Facests
+2.  Smooth
+3.  Alpha
+
+GPT-4: "Certainly! In the `ggplot2` package in R, visualization is built up through layers, allowing users to iteratively add elements to their plots. Let's go through each of the items you listed:
+
+1.  **Facets**:
+    -   Facets are a way to create multiple small plots (sub-plots) that share the same x and y axes, arranged in a grid. This is extremely useful for visualizing data across different subgroups or categories.
+    -   Two primary functions are used to create facets:
+        -   `facet_wrap(~variable, nrow = , ncol = )`: It wraps a 1D sequence of panels into a 2D grid.
+        -   `facet_grid(rows = ~variable1, cols = ~variable2)`: It creates a 2D grid of panels. You can facet by a variable on rows and/or columns.
+    -   Example: `R      library(ggplot2)      ggplot(mpg, aes(x=displ, y=hwy)) +          geom_point() +          facet_wrap(~class, nrow=2)`
+2.  **Smooth**:
+    -   The `geom_smooth()` function adds a smoothed line (typically a regression line) to a scatter plot, helping to show trends or patterns in the data. By default, if the dataset is large, it uses a method called 'loess' (locally estimated scatterplot smoothing). For smaller datasets or for categorical x-axis, it will compute a linear model.
+    -   You can specify the method you want using the `method` argument.
+    -   Example: `R      ggplot(mpg, aes(x=displ, y=hwy)) +          geom_point() +          geom_smooth()`
+3.  **Alpha**:
+    -   Alpha refers to the transparency level of a geom (graphic element). It takes values between 0 (completely transparent) and 1 (completely opaque).
+    -   Adjusting the alpha level can be particularly useful when dealing with overlapping points in scatter plots, as it helps to visualize the density of points.
+    -   The `alpha` argument can be set in most geoms to adjust transparency.
+    -   Example: `R      ggplot(mpg, aes(x=displ, y=hwy)) +          geom_point(alpha=0.5)` In this example, points in the scatter plot will be semi-transparent.
+
+These are just basic overviews of each concept. The flexibility and power of `ggplot2` allow for much deeper customization and control over visualizations."
+
+```{r eval=TRUE, include=TRUE}
+
+library(ggplot2)
+library(palmerpenguins)
+
+
+p <- ggplot(data = penguins) + 
+  geom_point(mapping = aes(x = flipper_length_mm, y = body_mass_g, color=species, shape = species, alpha=0.5)) +
+labs(title = "Palmer Penguins: Body Mass vs Flipper Length", subtitle = "SubTitle Here", caption = "Data collected by Dr. Kristen Gorman, 2007-2009")
+
+
+psaved <- p + annotate("text",x=220,y=3500,label="The Gentoos are the Largest", color = "purple",fontface = "bold", size=4.0, angle=25) +
+    facet_wrap(~species, nrow=2)
+
+# ggsave("Three Penguins.png")
+
+
+```
+
+------------------------------------------------------------------------
+
+# Future Sections Under Construction ...
+
+TEXT
+
+------------------------------------------------------------------------
+
+## Section
+
+TEXT
+
+```{r eval=FALSE, include=TRUE}
+
+
+
+```
+
+------------------------------------------------------------------------
+
+## Section
+
+TEXT
+
+```{r eval=FALSE, include=TRUE}
+
+
+
+```
+
+------------------------------------------------------------------------
+
+## Section
+
+TEXT
+
+```{r eval=FALSE, include=TRUE}
+
+
+
+```
+
+------------------------------------------------------------------------
+
+## Section
+
+TEXT
+
+```{r eval=FALSE, include=TRUE}
+
+
+
+```
+
+------------------------------------------------------------------------
+
+## Section
+
+TEXT
+
+```{r eval=FALSE, include=TRUE}
+
+
+
+```
+
+------------------------------------------------------------------------
+
+## Section
+
+TEXT
+
+```{r eval=FALSE, include=TRUE}
+
+
+
+```
+
+------------------------------------------------------------------------
+
+## Section
+
+TEXT
+
+```{r eval=FALSE, include=TRUE}
+
+
+
+```
+
+------------------------------------------------------------------------
+
+## Section
+
+TEXT
+
+```{r eval=FALSE, include=TRUE}
+
+
+
+```
+
+------------------------------------------------------------------------
+
+## Section
+
+TEXT
+
+```{r eval=FALSE, include=TRUE}
+
+
+
+```
+
+------------------------------------------------------------------------
+
+## Section
+
+TEXT
+
+```{r eval=FALSE, include=TRUE}
+
+
+
+```
 
 ------------------------------------------------------------------------
 
