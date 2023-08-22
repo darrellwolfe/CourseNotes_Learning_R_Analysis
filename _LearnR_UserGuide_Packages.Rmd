@@ -72,22 +72,41 @@ install.packages("gganimate")
 install.packages("ggridges")
 
 
-
-
-install.packages("")
-install.packages("")
-install.packages("")
-install.packages("")
+#Database
+install.packages("DBI")
+install.packages("odbc")
+install.packages("RODBC")
 
 
 #SQL
+install.packages("sqldf")
 
+Example Use Case:
+  sqldf("SELECT * FROM Orange ORDER BY age ASC, circumference DESC LIMIT 5")
 
+SEE: 
+  
+  1.3. Importing from SQL Databases
+  https://tomaztsql.wordpress.com/2020/04/27/essential-list-of-useful-r-packages-for-data-scientists/
 
+AND:
+    SQL in R
+    https://dept.stat.lsa.umich.edu/~jerrick/courses/stat701/notes/sql.html
+
+    
+    
 # HTML
 install.packages("shiny")
 install.packages("htmltools")
 
+
+
+#TBD...
+
+install.packages("")
+install.packages("")
+install.packages("")
+install.packages("")
 
 ```
 

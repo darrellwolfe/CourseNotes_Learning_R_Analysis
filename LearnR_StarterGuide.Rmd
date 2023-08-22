@@ -33,15 +33,13 @@ options(repos = c(CRAN = "https://cloud.r-project.org/"))
 
 *All of this is subject to change. I started writing these in .R and now I'm writing in RMarkdown.* \*
 
--   Learn_R_ref_Intro_to.R - That's where you are now
+-   [LearnR_StarterGuide](http://www.toposcreative.com/p/learnr.html).R - That's where you are now
 
--   Learn_R_ref_Resources.html - This will be links to Videos, Blogs, and Websites about R
+    -   This will be links to Videos, Blogs, and Websites about R
 
--   Learn_R_ref_Basics_of.R - This will be covering the very basic elements of R syntax, vocabulary, etc.
+    -   This will be covering the very basic elements of R syntax, vocabulary, etc.
 
--   Learn_R_4_Packages\_.R - Information on important or interesting packages I find along the way.
-
--   Learn_R_ref_HowTo_TBC -
+-   [Learn_R_Packages](http://www.toposcreative.com/p/learnrpackages.html)\_.R - Supplemental Information on important or interesting packages I find along the way.
 
 *Interesting - To create that list, I used an asterisk, which is what RMarkdown Cheat Sheet suggested. It didn't take. When I wrote it in the Visual vs Source, using the buttons, and went back to the code, it showed a new format. This can happen when updates come through.*
 
@@ -146,6 +144,8 @@ I'm creating this as I'm learning R through Coursera. For information on the cou
 [Data Analysis with R Programming](https://www.coursera.org/learn/data-analysis-r/home/welcome) 
 ```
 
+------------------------------------------------------------------------
+
 #### Other Resources
 
 I will also be implementing strategies I find from any helpful resources, including the native help documentation, YouTube videos, TikTok posts, articles, and of course: GPT-4! I'll link to anything I find that is useful.
@@ -153,6 +153,16 @@ I will also be implementing strategies I find from any helpful resources, includ
 One perfect example of a resource is the YouTube video: "[Learn R in 39 minutes](https://www.youtube.com/watch?v=yZ0bV2Afkjc "YouTube: Learn R in 39 minutes")" by **Equitable Equations.** This video was comprehensive but not too long. The last portion of the video informed me about RMarkdown documents (which I'm using to write this now). Definitely subscribe to his channel.
 
 With all that established, let's get to learning R.
+
+#### List of Helpful R Resources:
+
+-   [Learn R in 39 minutes](https://www.youtube.com/watch?v=yZ0bV2Afkjc "YouTube: Learn R in 39 minutes") by **Equitable Equations**
+
+-   [Data analysis using R (2021)](https://youtube.com/playlist?list=PLhR2Go-lh6X6ZJnN4WQScB4qjO4GYTO0S "YouTube: Data analysis using R (2021)") by Danny Arends
+
+-   [R programming in one hour](https://youtu.be/eR-XRSKsuR4 "YouTube: R programming in one hour") - a crash course for beginners by R Programming 101
+
+-   [Visualize your data using ggplot. R programming is the best platform for creating plots and graphs](https://youtu.be/rfR9Nrpfnyg "YouTube: Visualize your data using ggplot"). by R Programming 101
 
 ------------------------------------------------------------------------
 
