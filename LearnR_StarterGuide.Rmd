@@ -29,6 +29,41 @@ options(repos = c(CRAN = "https://cloud.r-project.org/"))
 
 ------------------------------------------------------------------------
 
+# The following packages are required to run this docoment in .rmd or .qmd
+If the following packages are not included this document will fail to stitch/knitt
+
+
+```{r eval=TRUE, include=TRUE}
+# List of all packages to be installed
+packages <- c(
+  "tidyverse",
+  "palmerpenguins",
+  "here",
+  "skimr",
+  "janitor",
+  "SimDesign",
+  "Tmisc",
+  "ggplot2"
+)
+
+# Install any packages that are not yet installed
+install_if_missing <- function(p) {
+  if (!requireNamespace(p, quietly = TRUE)) {
+    install.packages(p)
+  }
+}
+
+# Apply the installation function to all packages
+invisible(lapply(packages, install_if_missing))
+
+# Load the libraries
+lapply(packages, library, character.only = TRUE)
+
+```
+
+
+
+
 ## This is a basic intro to R, I will be creating the following:
 
 *All of this is subject to change. I started writing these in .R and now I'm writing in RMarkdown.* \*
